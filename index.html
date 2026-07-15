@@ -13,34 +13,20 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:100vh;
+    height:100vh;
 }
 
 .card{
     background:white;
-    padding:35px;
+    padding:40px;
     border-radius:20px;
     text-align:center;
-    width:340px;
+    width:350px;
     box-shadow:0 10px 30px rgba(0,0,0,.2);
-}
-
-img{
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    object-fit:cover;
-    margin:20px 0;
-    border:5px solid #ff4f81;
 }
 
 h1{
     color:#ff4f81;
-}
-
-p{
-    color:#555;
-    line-height:1.5;
 }
 
 button{
@@ -52,10 +38,6 @@ button{
     cursor:pointer;
     font-size:18px;
 }
-
-button:hover{
-    background:#ff2968;
-}
 </style>
 
 </head>
@@ -63,24 +45,29 @@ button:hover{
 
 <div class="card">
 
-<h1>🎉 Feliz Aniversário, Maria! 🎉</h1>
+<h1>🎉 Feliz Aniversário! 🎉</h1>
 
-<img src="foto.jpg" alt="Foto">
+<p>Espero que seu dia seja incrível!</p>
 
-<p>
-Que seu dia seja repleto de alegria, saúde e momentos inesquecíveis.
-Preparei uma mensagem especial para você. ❤️
-</p>
+<button id="playBtn">▶ Ouvir Mensagem</button>
 
-<button onclick="document.getElementById('audio').play()">
-▶ Ouvir Mensagem
-</button>
-
-<audio id="audio">
-    <source src="audio.mp3" type="audio/mpeg">
-</audio>
+<audio id="audio" src="audio.mp3"></audio>
 
 </div>
+
+<script>
+const audio = document.getElementById("audio");
+const botao = document.getElementById("playBtn");
+
+botao.addEventListener("click", async () => {
+    try {
+        await audio.play();
+    } catch (e) {
+        console.error(e);
+        alert("Não foi possível reproduzir o áudio.");
+    }
+});
+</script>
 
 </body>
 </html>
